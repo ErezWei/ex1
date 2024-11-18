@@ -8,11 +8,22 @@ Assignment:
 // REMIDER : YOU CANT USE ANY CONTROL FLOW OPERATIONS OR FUNCTIONS, ONLY BITWISE.
 
 int main() {
-  
+
+  //Set variables for the whole program
+  int firstNumber = 0, secondNumber = 0, bitPosition = 0, result = 0;
+
   // What bit
   printf("What bit:\n");
   /*Scan two integers (representing number and a position)
   Print the bit in this position. */
+  printf("Please enter a number:\n");
+  scanf("%d", &firstNumber);
+  printf("Please enter a position:\n");
+  scanf("%d", &bitPosition);
+  /*Right shift firstNumber to bring user selected bit to index 0,
+  Then apply mask to turn off all other bits except index 0. */
+  result = (firstNumber >> bitPosition) & 0x1;
+  printf("The bit in position %d of number %d is: %d\n", bitPosition, firstNumber, result);
   
   // Set bit
   printf("\nSet bit:\n");
@@ -21,12 +32,26 @@ int main() {
   Print the output
   Now make sure it's "off" (equal to 0)
   Print the output */
+  printf("Please enter a number:\n");
+  scanf("%d", &firstNumber);
+  printf("Please enter a position:\n");
+  scanf("%d", &bitPosition);
+  //Print number with user selected bit turned on
+  printf("Number with bit %d set to 1: %d\n", bitPosition, firstNumber | (0x1 << bitPosition));
+  //Print number with user selected bit turned off
+  printf("Number with bit %d set to 0: %d\n", bitPosition, firstNumber & ~(0x1 << bitPosition));
 
   // Toggle bit
   printf("\nToggle bit:\n");
   /*Scan two integers (representing number and a position)
   Toggle the bit in this position
   Print the new number */
+  printf("Please enter a number:\n");
+  scanf("%d", &firstNumber);
+  printf("Please enter a position:\n");
+  scanf("%d", &bitPosition);
+  //Print number with user selected bit toggled
+  printf("Number with bit %d toggled: %d\n", bitPosition, firstNumber ^ (0x1 << bitPosition));
   
   // Even - Odd
   printf("\nEven - Odd:\n");
